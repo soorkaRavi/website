@@ -6,76 +6,26 @@ layout: default
    <div class="container-fluid">
       <div class="row no-gutters">
          <div class="col-lg-12 col-sm-12 col-md-12 slider-wrap">
-            <div class="slider-item">
-               <div class="slider-item-content">
-                  <div class="post-thumb mb-4">
-                     <a href="blog-single.html">
-                     <img src="images/products/team-collaboration-mens-tee.png" alt="" class="img-fluid">
-                     </a>
-                  </div>
-                  <div class="slider-post-content">
-                     <span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">Collaboration</span>
-                     <h3 class="post-title mt-1"><a href="blog-single.html">Team Collaboration Hoodie</a></h3>
-                     <span class=" text-muted  text-capitalize">January 2, 2019</span>
-                  </div>
-               </div>
-            </div>
-            <div class="slider-item">
-               <div class="slider-item-content">
-                  <div class="post-thumb mb-4">
-                     <a href="blog-single.html">
-                     <img src="images/products/concepts-hoodie.png" alt="" class="img-fluid">
-                     </a>
-                  </div>
-                  <div class="slider-post-content">
-                     <span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">Concepts</span>
-                     <h3 class="post-title mt-1"><a href="blog-single.html">Concept Hoodie</a></h3>
-                     <span class=" text-muted  text-capitalize">September 15, 2019</span>
-                  </div>
-               </div>
-            </div>
-            <div class="slider-item">
-               <div class="slider-item-content">
-                  <div class="post-thumb mb-4">
-                     <a href="blog-single.html">
-                     <img src="images/products/launch-tapestry.png" alt="" class="img-fluid">
-                     </a>
-                  </div>
-                  <div class="slider-post-content">
-                     <span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">Home</span>
-                     <h3 class="post-title mt-1"><a href="blog-single.html">Launch Tapestry</a></h3>
-                     <span class=" text-muted  text-capitalize">June 12, 2019</span>
-                  </div>
-               </div>
-            </div>
-            <div class="slider-item">
-               <div class="slider-item-content">
-                  <div class="post-thumb mb-4">
-                     <a href="blog-single.html">
-                     <img src="images/products/cooper-short-shirt.png" alt="" class="img-fluid">
-                     </a>
-                  </div>
-                  <div class="slider-post-content">
-                     <span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">Women</span>
-                     <h3 class="post-title mt-1"><a href="blog-single.html">Cooper Short Shirt</a></h3>
-                     <span class=" text-muted  text-capitalize">September 15, 2019</span>
-                  </div>
-               </div>
-            </div>
-            <div class="slider-item">
-               <div class="slider-item-content">
-                  <div class="post-thumb mb-4">
-                     <a href="blog-single.html">
-                     <img src="images/products/community-womens-track-pants.png" alt="" class="img-fluid">
-                     </a>
-                  </div>
-                  <div class="slider-post-content">
-                     <span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">Community</span>
-                     <h3 class="post-title mt-1"><a href="blog-single.html">Women's Community Track Pants</a></h3>
-                     <span class=" text-muted  text-capitalize">September 15, 2019</span>
-                  </div>
-               </div>
-            </div>
+
+           {% for catalog in site.catalog limit:15 %}
+                {% if catalog.type == 'product' %}
+              <div class="slider-item">
+                 <div class="slider-item-content">
+                    <div class="post-thumb mb-4">
+                       <a href="#">
+                       <img src="{{ catalog.image }}" alt="" class="img-fluid">
+                       </a>
+                    </div>
+                    <div class="slider-post-content">
+                       <span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing">Collaboration</span>
+                       <h3 class="post-title mt-1"><a href="#">{{ catalog.name }}</a></h3>
+                       <span class=" text-muted  text-capitalize">January 2, 2019</span>
+                    </div>
+                 </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+
          </div>
       </div>
    </div>

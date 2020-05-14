@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<section class="section-padding pt-4">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+           <article class="post-grid mb-5">
+              <h2 class="mb-1 mt-2 post-title">The Union Fashion Catalog</h2>
+              <p>These are all of the areas in which we offer products as part of our space inspired catalog.</p>
+           </article>
+            <div class="row">
+
+              {% for catalog in site.catalog %}
+                {% if catalog.type == 'category' %}
+                  <div class="col-lg-6">
+                		<article class="post-grid mb-5">
+                			<a class="post-thumb mb-4 d-block" href="{{ site.url }}/catalog/{{ catalog.name | downcase }}">
+                				<img src="{{ post.image }}" alt="" class="img-fluid">
+                			</a>
+                			<span class="font-sm text-color letter-spacing text-uppercase post-meta font-extra">Experience</span>
+                			<h3 class="post-title mb-1 mt-2"><a href="{{ site.url }}/catalog/{{ catalog.name | downcase }}">{{ catalog.name }}</a></h3>
+
+                			<div class="post-content mt-4">
+                				<p>{{ catalog.description | truncate: 250, ".." }} <a href="{{ site.url }}/catalog/{{ catalog.name | downcase }}">view details</a></p>
+                			</div>
+                		</article>
+                	</div>
+                {% endif %}
+              {% endfor %}
+
+            </div>
+
+         </div>
+
+         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="sidebar sidebar-right">
+               <div class="sidebar-wrap mt-5 mt-lg-0">
+
+                 {% include prooduct-tag-sidebar.html %}
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>

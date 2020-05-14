@@ -1,0 +1,89 @@
+<section class="section-padding pt-4">
+   <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+        {% assign category = '' %}
+        {% if page.type == 'product' %}
+
+        				<div class="single-post">
+            <div class="post-header mb-5 text-center">
+                <div class="meta-cat">
+                    <a class="post-category font-extra text-color text-uppercase font-sm letter-spacing-1" href="#">Health ,</a>
+                    <a class="post-category font-extra text-color text-uppercase font-sm letter-spacing-1"  href="#">lifestyle</a>
+                </div>
+                <h2 class="post-title mt-2">
+                    {{ page.name }}
+                </h2>
+
+                <div class="post-meta">
+                    <span class="text-uppercase font-sm letter-spacing-1 mr-3">$39.95</span>
+                </div>
+                <div class="post-featured-image mt-5">
+                    <img src="{{ page.image }}" class="img-fluid w-100" alt="featured-image">
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="entry-content">{{ page.description }}</div>
+
+                <div class="post-tags py-4">
+                  {% for tag in page.tags %}
+                   <a href="#">#{{ tag }}</a>
+                  {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+        {% else if page.type == 'category' %}
+
+          <article class="post-grid mb-5">
+            <h2 class="mb-1 mt-2 post-title">{{ page.name }}</h2>
+            <p>{{ page.description }}</p>
+          </article>
+
+          <div class="row">
+
+            {% for catalog in site.catalog %}
+
+              {% if catalog.type == 'category' %}
+                {% assign category = catalog.name %}
+              {% else %}
+
+                {% if page.name == category %}
+                  <div class="col-lg-6">
+                    <article class="post-grid mb-5">
+                      <a class="post-thumb mb-4 d-block" href="/catalog/{{ category | downcase }}/{{ catalog.name | downcase | replace: " ", "-" }}/">
+                        <img src="{{ catalog.image }}" alt="" class="img-fluid">
+                      </a>
+                      <span class="font-sm text-color letter-spacing text-uppercase post-meta font-extra">Commerce</span>
+                      <h3 class="post-title mb-1 mt-2"><a href="/catalog/{{ category | downcase }}/{{ catalog.name | downcase | replace: " ", "-" }}/">{{ catalog.name }}</a></h3>
+
+                      <div class="post-content mt-4">
+                        <p>{{ catalog.description | truncate: 250, ".." }} <a href="/catalog/{{ category | downcase }}/{{ catalog.name | downcase | replace: " ", "-" }}/">details</a></p>
+                      </div>
+                    </article>
+                  </div>
+                {% endif %}
+
+              {% endif %}
+            {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+           <div class="sidebar sidebar-right">
+              <div class="sidebar-wrap mt-5 mt-lg-0">
+
+              {% include prooduct-tag-sidebar.html %}
+
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>

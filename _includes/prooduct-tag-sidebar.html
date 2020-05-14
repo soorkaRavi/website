@@ -1,0 +1,44 @@
+{% assign rawtags = "" %}
+{% for product in site.catalog %}
+	{% if product.type == 'product' %}
+		{% assign ttags = product.tags | join:'|' | append:'|' %}
+		{% assign rawtags = rawtags | append:ttags %}
+	{% endif %}
+{% endfor %}
+{% assign rawtags = rawtags | split:'|' | sort %}
+
+{% assign tags = "" %}
+{% for tag in rawtags %}
+	{% if tag != "" %}
+		{% if tags == "" %}
+			{% assign tags = tag | split:'|' %}
+		{% endif %}
+		{% unless tags contains tag %}
+			{% assign tags = tags | join:'|' | append:'|' | append:tag | split:'|' %}
+		{% endunless %}
+	{% endif %}
+{% endfor %}
+
+<div class="sidebar-widget category mb-5">
+   <h4 class="text-center widget-title">Tags</h4>
+   <ul class="list-unstyled" style="text-align: left;">
+     {% for tag in tags %}
+
+     {% assign count = 0 %}
+     {% for product in site.catalog %}
+			 {% if product.type == 'product' %}
+	      {% for count_tag in product.tags %}
+	        {% if count_tag == tag %}
+	          {% assign count = count | plus: 1 %}
+	        {% endif %}
+	      {% endfor %}
+			{% endif %}
+     {% endfor %}
+ 
+      <li class="align-items-center d-flex justify-content-between">
+         <a href="/catalog/{{ tag | downcase }}/">{{ tag }}</a>
+         <span>{{ count }}</span>
+      </li>
+      {% endfor %}
+   </ul>
+</div>

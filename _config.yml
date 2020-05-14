@@ -9,3 +9,14 @@ markdown: kramdown
 paginate: 12
 paginate_path: "/page/:num"
 permalink: /:year/:month/:day/:title/
+
+collections:
+  catalog:
+    output: true
+    permalink: /catalog/:path/
+
+defaults:
+  - scope:
+      type: catalog
+    values:
+      layout: "products"
