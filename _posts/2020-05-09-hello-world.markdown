@@ -5,7 +5,7 @@ title: Hello World Union Fashion
 date: 2020-05-09T09:00:00.000Z
 tags:
   - Communication
-image: /images/postman-logo.png
+image: /images/cooper.png
 author: Kin Lane
 ---
 Welcome to Union Fashion, an API-first space inspired e-commerce implementation from Postman. The project was born out of our solutions group, but is being pushed forward as part of a public effort to evolve it as a reference implementation for how to do multi-cloud API first. We got tired of having many different demos for our workshops and webinars and thought it would be helpful to have a more established reference for everything API we were talking about. Union Fashion is the result.
